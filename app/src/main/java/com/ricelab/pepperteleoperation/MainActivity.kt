@@ -15,6 +15,8 @@ import com.aldebaran.qi.sdk.`object`.holder.AutonomousAbilitiesType
 import com.aldebaran.qi.sdk.`object`.holder.Holder
 import com.aldebaran.qi.sdk.builder.GoToBuilder
 import com.aldebaran.qi.sdk.builder.HolderBuilder
+import com.aldebaran.qi.sdk.builder.AnimationBuilder
+import com.aldebaran.qi.sdk.builder.AnimateBuilder
 import com.aldebaran.qi.sdk.builder.SayBuilder
 import com.aldebaran.qi.sdk.builder.TransformBuilder
 import kotlinx.coroutines.*
@@ -63,9 +65,44 @@ class MainActivity : AppCompatActivity(), RobotLifecycleCallbacks {
             "STOP" -> stopRobot()
             "VOLUME_UP" -> changeVolume(AudioManager.ADJUST_RAISE)
             "VOLUME_DOWN" -> changeVolume(AudioManager.ADJUST_LOWER)
+            "HUG" -> performAnimation(R.raw.hug)
+            "GREET" -> performAnimation(R.raw.hello_a010)
             else -> {
                 // If it's not a movement command, assume it's a phrase for the robot to say
                 sayText(command)
+            }
+        }
+    }
+
+    private fun performAnimation(animationRes: Int) {
+        if (!::qiContext.isInitialized) {
+            Log.e("MainActivity", "QiContext is not initialized.")
+            return
+        }
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // Create an animation object from the resource.
+                val myAnimation: Animation = AnimationBuilder.with(qiContext)
+                    .withResources(animationRes)
+                    .build()
+
+                // Build the Animate action.
+                val animate: Animate = AnimateBuilder.with(qiContext)
+                    .withAnimation(myAnimation)
+                    .build()
+
+                // Run the animation asynchronously.
+                animate.async().run().thenConsume { future ->
+                    if (future.isSuccess) {
+                        Log.i("MainActivity", "Animation completed successfully.")
+                    } else {
+                        Log.e("MainActivity", "Animation failed: ${future.errorMessage}")
+                    }
+                }
+
+            } catch (e: Exception) {
+                Log.e("MainActivity", "Error during animation: ${e.message}", e)
             }
         }
     }
