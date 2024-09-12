@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
     <!-- Center Stop Button -->
     <Button
@@ -9,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stop"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:visibility="invisible"/>
 
     <!-- Up Button -->
     <Button
@@ -19,7 +21,8 @@
         android:text="Forward"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:visibility="invisible"/>
 
     <!-- Down Button -->
     <Button
@@ -29,7 +32,8 @@
         android:text="Backward"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="50dp"
+        android:visibility="invisible"/>
 
     <!-- Left Button -->
     <Button
@@ -39,7 +43,8 @@
         android:text="Left"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="50dp"/>
+        android:layout_marginLeft="50dp"
+        android:visibility="invisible"/>
 
     <!-- Right Button -->
     <Button
@@ -49,5 +54,18 @@
         android:text="Right"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginRight="50dp"
+        android:visibility="invisible"/>
+
+    <!-- Full-screen overlay image (over the buttons) -->
+    <ImageView
+        android:id="@+id/overlay_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/rice_unige_logo"
+        android:scaleType="fitCenter"
+        android:alpha="0.5"
+        android:scaleX="0.8"
+        android:scaleY="0.8"/>
+
 </RelativeLayout>
