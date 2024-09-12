@@ -64,7 +64,6 @@
         android:layout_height="match_parent"
         android:src="@drawable/rice_unige_logo"
         android:scaleType="fitCenter"
-        android:alpha="0.5"
         android:scaleX="0.8"
         android:scaleY="0.8"/>
 

@@ -23,6 +23,8 @@ import kotlinx.coroutines.*
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import android.media.AudioManager
+import android.view.View
+import com.aldebaran.qi.sdk.design.activity.RobotActivity
 
 class MainActivity : AppCompatActivity(), RobotLifecycleCallbacks {
 
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity(), RobotLifecycleCallbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        actionBar?.hide()  // If you're using the native action bar
+        supportActionBar?.hide()
         setContentView(R.layout.activity_main)
         QiSDK.register(this, this)
 
