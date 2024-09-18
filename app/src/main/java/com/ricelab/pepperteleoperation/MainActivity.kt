@@ -136,6 +136,7 @@ class MainActivity : AppCompatActivity(), RobotLifecycleCallbacks {
                     .withFrame(targetFrame.frame())
                     .withFinalOrientationPolicy(OrientationPolicy.ALIGN_X)
                     .withMaxSpeed(0.3F)
+                    .withPathPlanningPolicy(PathPlanningPolicy.STRAIGHT_LINES_ONLY)
                     .build()
 
                 goTo?.addOnStartedListener { Log.i("MainActivity", "GoTo action started.") }

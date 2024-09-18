@@ -62,7 +62,7 @@
         android:id="@+id/overlay_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/rice_unige_logo"
+        android:src="@drawable/raise2"
         android:scaleType="fitCenter"
         android:scaleX="0.8"
         android:scaleY="0.8"/>
