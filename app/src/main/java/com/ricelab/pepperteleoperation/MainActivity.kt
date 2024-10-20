@@ -178,6 +178,7 @@ class MainActivity : AppCompatActivity(), RobotLifecycleCallbacks {
         // Build the Say action
         val say = SayBuilder.with(qiContext)
             .withText(text)
+            // .withBodyLanguageOption(BodyLanguageOption.DISABLED)
             .build()
 
         // Run the Say action asynchronously
