@@ -23,8 +23,6 @@ import kotlinx.coroutines.*
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import android.media.AudioManager
-import android.view.View
-import com.aldebaran.qi.sdk.design.activity.RobotActivity
 
 class MainActivity : AppCompatActivity(), RobotLifecycleCallbacks {
 
@@ -70,7 +68,8 @@ class MainActivity : AppCompatActivity(), RobotLifecycleCallbacks {
             "VOLUME_UP" -> changeVolume(AudioManager.ADJUST_RAISE)
             "VOLUME_DOWN" -> changeVolume(AudioManager.ADJUST_LOWER)
             "HUG" -> performAnimation(R.raw.hug)
-            "GREET" -> performAnimation(R.raw.hello_a010)
+            "GREET" -> performAnimation(R.raw.hello)
+            "HANDSHAKE" -> performAnimation(R.raw.handshake)
             else -> {
                 // If it's not a movement command, assume it's a phrase for the robot to say
                 sayText(command)
