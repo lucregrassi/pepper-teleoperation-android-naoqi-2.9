@@ -23,6 +23,7 @@ import kotlinx.coroutines.*
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import android.media.AudioManager
+import android.view.WindowManager
 
 class MainActivity : AppCompatActivity(), RobotLifecycleCallbacks {
 
@@ -36,7 +37,12 @@ class MainActivity : AppCompatActivity(), RobotLifecycleCallbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        actionBar?.hide()  // If you're using the native action bar
+        // Hide status bar
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        actionBar?.hide()
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
         QiSDK.register(this, this)
